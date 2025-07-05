@@ -1,0 +1,39 @@
+/* Contenido para: style_equipos.css */
+
+.form-container {
+    background-color: #f8f9fa; /* Un fondo gris muy claro */
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+
+.form-container .tab-content {
+    background-color: #fff; /* Fondo blanco para el contenido de las pestañas */
+    border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 1.5rem;
+    border-radius: 0 0 0.375rem 0.375rem;
+}
+
+.form-footer {
+    border-top: 1px solid #dee2e6;
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+}
+
+.input-group-text { /* Para que el ícono de búsqueda parezca un botón */
+    cursor: pointer;
+}
+
+.form-container label {
+    font-weight: 500; /* Letras de etiquetas un poco más gruesas */
+    color: #495057;
+}
+
+/* Alineación de etiquetas a la derecha en pantallas grandes */
+@media (min-width: 576px) {
+    .text-sm-end {
+        text-align: right !important;
+    }
+}

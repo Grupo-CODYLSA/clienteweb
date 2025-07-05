@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'clienteweb/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'clienteweb/css/estilo_equipos.css' %}">
+</head>
+
+<body class="dashboard-page">
+    <div class="main-wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header"><h4>Mi Menú</h4></div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#gestionSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="gestionSubmenu">
+                     <i class="bi bi-cart4"></i> Gestión
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="gestionSubmenu">
+                        <li><a class="nav-link" href="{% url 'proceso_aprobacion' %}">Proceso de Aprobación</a></li>                        
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-pie-chart-fill"></i> Finanzas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-rolodex"></i> CRM</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-lightbulb-fill"></i> Oportunidades</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin"></i> Ventas - Clientes</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#comprasSubmenu" data-bs-toggle="collapse" role="button">
+                        <i class="bi bi-cart4"></i> Compras - Proveedores
+                    </a>
+                    <ul class="collapse list-unstyled submenu" id="comprasSubmenu">
+                        <li><a class="nav-link" href="#">Solicitud de Compras</a></li>
+                        <li><a class="nav-link" href="#">Pedido</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-people-fill"></i> Socios de Negocios</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-bank"></i> Gestión de Bancos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-seam-fill"></i> Inventario</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cpu-fill"></i> Recursos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-gear-wide-connected"></i> Producción</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-clipboard-data-fill"></i> MRP</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#mantenimientoSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="mantenimientoSubmenu">
+                        <i class="bi bi-tools"></i> Mantenimiento</a>
+                    <ul class="collapse list-unstyled submenu" id="mantenimientoSubmenu">
+                        <li><a class="nav-link active" href="{% url 'equipos' %}"><i class="bi bi-truck"></i> Equipos</a></li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-card-checklist"></i> Planes de Mantenimiento</a></li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-speedometer2"></i> Lecturas</a></li>
+                        <li><a class="nav-link" href="#omSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="omSubmenu"
+                            ><i class="bi bi-journal-check"></i> Ordenes de Mantenimiento</a>
+                            <ul class="collapse list-unstyled submenu" id="omSubmenu">
+                                <li><a class="nav-link" href="#"><i class="bi bi-pencil-square"></i> Orden de Mantenimiento</a></li>
+                                <li><a class="nav-link" href="{% url 'orden_mantenimiento' %}"><i class="bi bi-pencil-square"></i> Administrador de OM</a></li>
+                                <li><a class="nav-link" href="{% url 'tareas' %}"><i class="bi bi-pencil-square"></i> Totem</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#tareasSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="tareasSubmenu">
+                                <i class="bi bi-list-task"></i> Tareas</a>
+                            <ul class="collapse list-unstyled submenu" id="tareasSubmenu">
+                                <li><a class="nav-link" href="#"><i class="bi bi-pencil-square"></i> Registro de Tareas</a></li>
+                                <li><a class="nav-link" href="#"><i class="bi bi-stack"></i> Registro de Tareas Masivo</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-envelope-paper"></i> Solicitudes</a></li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-wrench"></i> Herramientas</a></li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-box-seam"></i> Materiales</a></li>
+                        <li><a class="nav-link" href="#"><i class="bi bi-clipboard-data"></i> Informes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-headset"></i> Servicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-badge-fill"></i> Recursos Humanos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-file-earmark-bar-graph-fill"></i> Informes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-file-earmark-excel-fill"></i> Excel Report...</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <button type="button" id="sidebarCollapse" class="btn"><i class="bi bi-list"></i></button>
+            <h1 class="mt-3">Equipos</h1>
+            
+            <div class="col-xl-3 col-md-6 mb-3" id="search-container">
+                <label for="equipo_search" class="form-label">Equipo</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="equipo_search" placeholder="Buscar equipo..." value="{{ equipo.Code }}">
+                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#equipoSearchModal">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-container mt-4 {% if not equipo %}d-none{% endif %}" id="form-container">
+                <form>
+                    <div class="row">
+                         <div class="col-md-8">
+                            <div class="row">
+                                <label for="formEquipoCode" class="col-sm-3 col-form-label text-sm-end">Equipo</label>
+                                <div class="col-sm-9"><div class="row"><div class="col-7"><input type="text" class="form-control" id="formEquipoCode" value="{{ equipo.Code }}" readonly></div><div class="col-5"><input type="text" class="form-control" id="name" value="{{ equipo.Name }}" readonly></div></div></div>
+                            </div>
+                            <div class="row mt-2"><label for="articulo" class="col-sm-3 col-form-label text-sm-end">Artículo Asociado</label><div class="col-sm-9"><div class="input-group"><input type="text" class="form-control" id="articulo" value="{{ equipo.U_ItemCode }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div></div>
+                            <div class="row mt-2"><label for="codigo_ext_form" class="col-sm-3 col-form-label text-sm-end">Código Extranjero</label><div class="col-sm-9"><div class="input-group"><input type="text" class="form-control" id="codigo_ext_form" value="{{ equipo.U_CodigoExt }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div></div>
+                            <div class="row mt-2"><label for="estado" class="col-sm-3 col-form-label text-sm-end">Estado</label><div class="col-sm-9"><div class="input-group"><input type="text" class="form-control" id="estado" value="{{ equipo.U_Estado }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div></div>
+                        </div>
+                        <div class="col-md-4">
+                             <div class="mb-3"><label for="propietario" class="form-label">Propietario</label><div class="input-group"><input type="text" class="form-control" id="propietario" value="{{ equipo.U_Propiet }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div>
+                             <div class="mb-3"><label for="cliente" class="form-label">Cliente</label><div class="input-group"><input type="text" class="form-control" id="cliente" value="{{ equipo.U_Cliente }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div>
+                        </div>
+                    </div>
+                    <div class="form-check mt-4"><input class="form-check-input" type="checkbox" id="activo" {% if equipo.U_Activo == 'Y' %}checked{% endif %}><label class="form-check-label" for="activo">Activo</label></div>
+                    
+                    <div class="mt-3">
+                        <ul class="nav nav-tabs" id="equipoTabs" role="tablist">
+                            <li class="nav-item" role="presentation"><button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general-tab-pane" type="button" role="tab">General</button></li>
+                            <li class="nav-item" role="presentation"><button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs-tab-pane" type="button" role="tab">Especificaciones</button></li>
+                            <li class="nav-item" role="presentation"><button class="nav-link" id="manto-tab" data-bs-toggle="tab" data-bs-target="#manto-tab-pane" type="button" role="tab">Mantenimientos</button></li>
+                            <li class="nav-item" role="presentation"><button class="nav-link" id="planes-tab" data-bs-toggle="tab" data-bs-target="#planes-tab-pane" type="button" role="tab">Planes Asociados</button></li>
+                            <li class="nav-item" role="presentation"><button class="nav-link" id="adjuntos-tab" data-bs-toggle="tab" data-bs-target="#adjuntos-tab-pane" type="button" role="tab">Empleo de Flota</button></li>
+                            <li class="nav-item" role="presentation"><button class="nav-link" id="comp-tab" data-bs-toggle="tab" data-bs-target="#comp-tab-pane" type="button" role="tab">Valor Asegurado</button></li>
+                        </ul>
+                        <div class="tab-content" id="equipoTabsContent">
+                            <div class="tab-pane fade show active" id="general-tab-pane" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Familia</label><div class="col-sm-8"><select class="form-select" id="familia"><option value="{{ equipo.U_Familia }}">{{ equipo.U_Familia }}</option></select></div></div>
+                                        <div class="mb-2 row"><div class="col-sm-8 offset-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" id="activo_fijo" {% if equipo.U_ActFijo == 'Y' %}checked{% endif %}><label class="form-check-label" for="activo_fijo">Activo fijo</label></div></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Motor</label><div class="col-sm-8"><input type="text" class="form-control" id="motor" value="{{ equipo.U_VKGMotor }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Tipo</label><div class="col-sm-8"><input type="text" class="form-control" id="tipo" value="{{ equipo.U_VKGTipo }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Modelo</label><div class="col-sm-8"><input type="text" class="form-control" id="modelo" value="{{ equipo.U_Modelo }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Proveedor</label><div class="col-sm-8"><div class="input-group"><input type="text" class="form-control" id="proveedor" value="{{ equipo.U_Proveed }}"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Expiración garantía</label><div class="col-sm-8"><input type="date" class="form-control" id="exp_garantia" value="{{ equipo.U_DtExpGta }}"></div></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Sub-Familia</label><div class="col-sm-8"><select class="form-select" id="sub_familia"><option value="{{ equipo.U_sFamilia }}">{{ equipo.U_sFamilia }}</option></select></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Descripción</label><div class="col-sm-8"><input type="text" class="form-control" id="descripcion" value="{{ equipo.U_VKGDesc }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Detalle</label><div class="col-sm-8"><input type="text" class="form-control" id="detalle" value="{{ equipo.U_VKGDetalle }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Nº de serie</label><div class="col-sm-8"><input type="text" class="form-control" id="nro_serie_tab" value="{{ equipo.U_NroSerie }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Inerno</label><div class="col-sm-8"><input type="text" class="form-control" id="interno" value="{{ equipo.U_VKGInterno }}"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Tipo</label><div class="col-sm-8"><input type="text" class="form-control" id="tipo" value="{{ equipo.U_VKGTipo }}"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="specs-tab-pane" role="tabpanel">
+                                <div class="row align-items-center">
+                                    <div class="col-md-1 text-end"><label class="form-label">Lectura #1</label></div>
+                                    <div class="col-md-5"><label class="form-label">Nombre</label><div class="input-group"><input type="text" class="form-control"><span class="input-group-text"><i class="bi bi-search"></i></span></div></div>
+                                    <div class="col-md-6"><label class="form-label">Valor</label><input type="text" class="form-control" value="293.047.000"></div>
+                                </div>
+                                <div class="row align-items-center mt-3">
+                                    <div class="col-md-1 text-end"><label class="form-label">Última lectura</label></div>
+                                    <div class="col-md-2"><input type="text" class="form-control" value="101235"></div>
+                                    <div class="col-md-3"><input type="date" class="form-control" value="2025-06-02"></div>
+                                </div>
+                                <hr class="my-4">
+                                <table class="table table-bordered">
+                                    <thead class="table-light"><tr><th scope="col" style="width: 5%;">#</th><th scope="col">Especificación</th></tr></thead>
+                                    <tbody><tr><th scope="row">1</th><td><input type="text" class="form-control border-0"></td></tr></tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="manto-tab-pane" role="tabpanel">
+                                <table class="table table-sm table-hover">
+                                    <thead><tr><th>Estado</th><th>Número OM</th><th>Fecha</th><th>Plan</th><th>Prioridad</th><th>Responsable</th><th>Nombre</th><th>Ubicacion</th></tr></thead>
+                                    <tbody>
+                                        <tr class="table-group-divider"><td colspan="8"><i class="bi bi-caret-down-fill"></i> Cancelada</td></tr>
+                                        <tr><td></td><td><i class="bi bi-arrow-right-short"></i> 10800</td><td>08/01/2025</td><td></td><td>Normal</td><td>173</td><td>Rotondaro Guillermo</td><td>Ubicación general</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="planes-tab-pane" role="tabpanel">
+                                <table class="table table-striped table-hover">
+                                    <thead><tr><th scope="col">Código</th><th scope="col">Nombre</th><th scope="col">Supervisor</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><i class="bi bi-arrow-right-short"></i> 11MC</td><td>Cambiar Líquido F</td><td>Alexis</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="adjuntos-tab-pane" role="tabpanel">
+                               <div class="row">
+                                   <div class="col-md-8">
+                                       <div class="mb-2 row"><label class="col-sm-3 col-form-label">CC Grupo</label><div class="col-sm-9"><input type="text" class="form-control" value="AGN_TTE - AGUANC"></div></div>
+                                       <div class="mb-2 row"><label class="col-sm-3 col-form-label">Un. Neg</label><div class="col-sm-9"><input type="text" class="form-control" value="CMQ"></div></div>
+                                       <div class="mb-2 row"><label class="col-sm-3 col-form-label">Grupo</label><div class="col-sm-9"><input type="text" class="form-control" value="CODYLSA"></div></div>
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="tab-pane fade" id="comp-tab-pane" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Valor Mercado</label><div class="col-sm-8"><input type="text" class="form-control" value="0.00"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Suma Asegurada</label><div class="col-sm-8"><input type="text" class="form-control" value="0.00"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Acara</label><div class="col-sm-8"><input type="text" class="form-control" value="0.00"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Info Auto</label><div class="col-sm-8"><input type="text" class="form-control" value="0.00"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Accesorios</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">CP</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Valor Contable</label><div class="col-sm-8"><input type="text" class="form-control" value="0.00"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Valor Mercado (Miguel Falabella)</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Valor Mercado (Vendo Tu Semi)</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Precio Venta (efectuada)</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Yacopin</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Aurelia Contado</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">IVECO Financiación</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Ivecam Contado</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Navicam Contado</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">MB TOP 200</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">MB Financiera</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">Financiado Colcar</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                        <div class="mb-2 row"><label class="col-sm-4 col-form-label">J Rios Contado</label><div class="col-sm-8"><input type="text" class="form-control"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-footer"><button type="submit" class="btn btn-primary">OK</button><button type="button" class="btn btn-secondary">Cancelar</button></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal fade" id="equipoSearchModal" tabindex="-1" aria-labelledby="equipoSearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="equipoSearchModalLabel">Buscar Equipo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-3" id="modalSearchInput" placeholder="Escribe para filtrar por código o nombre...">
+                    <div id="modalResultsList"><p class="text-center">Cargando equipos...</p></div>
+                    <div id="modalPaginationControls" class="d-flex justify-content-center mt-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidebarCollapse = document.getElementById('sidebarCollapse');
+            var sidebar = document.getElementById('sidebar');
+            sidebarCollapse.addEventListener('click', function () {
+                sidebar.classList.toggle('toggled');
+            });
+        });
+    </script>
+    <script src="{% static 'clienteweb/js/equipos.js' %}"></script>
+</body>
+</html>
