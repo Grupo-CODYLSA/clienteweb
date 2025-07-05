@@ -11,13 +11,12 @@ body {
    ESTILOS PARA LA PÁGINA DE LOGIN (.login-page)
    ================================================================= */
 body.login-page {
-    /* --- 1. CORRIGE LA RUTA DE TU IMAGEN AQUÍ --- */
-    /* Reemplaza 'fondo-codylsa.jpg' por el nombre REAL de tu archivo de imagen */
-    background-image: url('../img/FONDO\ GC.jpg'); /* << ¡¡¡ATENCIÓN AQUÍ!!! */
-    
-    background-size: cover;          /* Para que la imagen cubra toda la pantalla */
-    background-position: center;     /* Para que la imagen esté centrada */
-    background-repeat: no-repeat;    /* Para que no se repita */
+    /* CORRECCIÓN: Usa una ruta absoluta desde la raíz del sitio */
+    background-image: url('/static/clienteweb/img/fondo_login.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
