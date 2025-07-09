@@ -10,4 +10,5 @@ urlpatterns = [
     path('api/equipos/', views.api_get_equipos, name='api_equipos'),
     path('api/tipos_om/', views.api_get_tipos_om, name='api_tipos_om'),
     path('api/talleres/', views.api_get_talleres, name='api_talleres'),
+ 
 ]

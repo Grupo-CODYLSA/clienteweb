@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login as auth_login # Renombrar para evitar conflicto
 from django.contrib.auth.decorators import login_required # Para proteger otras vistas
+from .logica_statusdoc import fetch_sap_status_docs
 
 from django.http import JsonResponse
 from . import sap_service  # <-- 1. Importamos nuestro nuevo servicio
@@ -86,3 +87,42 @@ def equipos_view(request):
             print(f"!!! No se encontraron datos en SAP para el equipo: {equipo_id}")
             
     return render(request, 'equipos.html', context)
+
+def proceso_aprobacion_view(request):
+    """
+    Obtiene los docs, agrupa las etapas de aprobación completas en una lista 'Historial'
+    y elimina los duplicados.
+    """
+    estado_filtro = request.GET.get('estado', 'Pendiente')
+    
+    # 1. Obtenemos todos los registros de SAP (incluyendo una fila por cada etapa)
+    documentos_desde_sap = fetch_sap_status_docs(estado=estado_filtro)
+
+    # 2. Procesamos la lista para agrupar las etapas por documento
+    documentos_agrupados = {}
+    
+    if documentos_desde_sap:
+        for etapa_doc in documentos_desde_sap:
+            # Clave única para cada documento
+            clave = (etapa_doc.get('Empresa'), etapa_doc.get('Ndeborrador'))
+
+            # Si es la primera vez que vemos este documento...
+            if clave not in documentos_agrupados:
+                # Lo guardamos y creamos su lista 'Historial', añadiendo el objeto de etapa completo.
+                documentos_agrupados[clave] = etapa_doc
+                documentos_agrupados[clave]['Historial'] = [etapa_doc]
+            # Si el documento ya existe...
+            else:
+                # Simplemente añadimos el objeto de etapa completo a su lista 'Historial' existente.
+                documentos_agrupados[clave]['Historial'].append(etapa_doc)
+
+    # Convertimos el diccionario de nuevo a una lista para la plantilla
+    documentos_finales = list(documentos_agrupados.values())
+
+    # 3. Creamos el contexto con la estructura de datos correcta
+    context = {
+        'documentos': documentos_finales,
+        'estado_actual': estado_filtro
+    }
+    
+    return render(request, 'proceso_aprobacion.html', context)

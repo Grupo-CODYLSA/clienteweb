@@ -1,0 +1,16 @@
+/* Estilos para los estados de etapa en la tabla de historial */
+
+.status-autorizado {
+    color: #198754; /* Un verde oscuro y legible */
+    font-weight: bold;
+}
+
+.status-pendiente {
+    color: #b58105; /* Un tono ámbar/dorado oscuro */
+    font-weight: bold;
+}
+
+.status-rechazado {
+    color: #dc3545; /* Un rojo estándar de Bootstrap */
+    font-weight: bold;
+}
